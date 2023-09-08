@@ -66,11 +66,11 @@ $(function () {
     // Your collectable choices are 'database' 'diamond' 'grace' 'kennedi' 'max' and 'steve'; more can be added if you wish
     // example usage: createCollectable(type, x, y, gravity, bounce)
 
-    createCollectable('database', 350, 550, 0, 0);
-    createCollectable('database', 700, 675, 0, 0);
-    createCollectable('database', 305, 200, 0, 0);
-    createCollectable('database', 1100, 50, 0, 0);
-    createCollectable('database', 1250, 325, 0, 0);
+    createCollectable('gem1', 350, 550, 0, 0);
+    createCollectable('gem2', 700, 675, 0, 0);    
+    createCollectable('gem3', 1250, 325, 0, 0);
+    createCollectable('gem4', 1100, 50, 0, 0);
+    createCollectable('gem5', 305, 200, 0, 0);
 
 
     // TODO 3
