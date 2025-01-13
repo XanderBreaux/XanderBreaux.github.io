@@ -13,7 +13,7 @@ var makeLevelData = function (window) {
       {
         name: "Level 1",
         number: 1,
-        speed: -3,
+        speed: 0,
         gameItems: [
           { type: "obstacle", x: 400, y: groundY },
           { type: "obstacle", x: 600, y: groundY },
@@ -38,7 +38,7 @@ var makeLevelData = function (window) {
       {
         name: "Level 2",
         number: 2,
-        speed: -3,
+        speed: 0,
         gameItems: [
           { type: "obstacle", x: 400, y: groundY },
           { type: "obstacle", x: 600, y: groundY },
@@ -63,7 +63,7 @@ var makeLevelData = function (window) {
       {
         name:"Level 3",
         number: 3,
-        speed: -3,
+        speed: 0,
         gameItems: [
           { type: "obstacle", x: 400, y: groundY },
           { type: "obstacle", x: 600, y: groundY },
@@ -92,7 +92,7 @@ var makeLevelData = function (window) {
       {
         name:"Level 4",
         number: 4,
-        speed: -3,
+        speed: 0,
         gameItems: [
           { type: "obstacle", x: 400, y: groundY },
           { type: "obstacle", x: 700, y: groundY },
