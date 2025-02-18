@@ -87,13 +87,13 @@ function checkForNewDirection(event) {
   perpendicular to the current direction
   */
 
-  if ((activeKey === KEY.LEFT) && (snake.head.direction !== "right")) {
+  if ((activeKey === KEY.LEFT) /*&& (snake.head.direction !== "right")*/) {
     snake.head.direction = "left";
-  } else if ((activeKey === KEY.RIGHT) && (snake.head.direction !== "left")) {
+  } else if ((activeKey === KEY.RIGHT) /*&& (snake.head.direction !== "left")*/) {
     snake.head.direction = "right";
-  } else if ((activeKey === KEY.UP) && (snake.head.direction !== "down")) {
+  } else if ((activeKey === KEY.UP) /*&& (snake.head.direction !== "down")*/) {
     snake.head.direction = "up";
-  } else if ((activeKey === KEY.DOWN) && (snake.head.direction !== "up" )) {
+  } else if ((activeKey === KEY.DOWN) /*&& (snake.head.direction !== "up" )*/) {
     snake.head.direction = "down";
   }
   
@@ -199,19 +199,20 @@ function handleAppleCollision() {
   If the tail is moving "down", place the next snakeSquare above it.
   etc...
   */
-  var row = 0;
-  var column = 0;
+  var row = snake.tail.row;
+  var column = snake.tail.column;
 
   // code to determine the row and column of the snakeSquare to add to the snake
-  if (snake.head.direction === "left"){
-    makeSnakeSquare(snake.head.row, snake.head.column + 1)
-  } else if (snake.head.direction === "right"){
-    makeSnakeSquare(snake.head.row, snake.head.column - 1)
-  } else if (snake.head.direction === "up"){
-    makeSnakeSquare(snake.head.row + 1, snake.head.column)
+  if (snake.tail.direction === "left") {
+    column += 1;
+  } else if (snake.tail.direction === "right") {
+    column -+ 1;
+  } else if (snake.tail.direction === "up") {
+    row += 1;
   } else {
-    makeSnakeSquare(snake.head.row - 1, snake.head.column)
+    row -= 1;
   }
+  makeSnakeSquare(row, column);
 }
 
 function hasCollidedWithSnake() {
@@ -225,8 +226,11 @@ function hasCollidedWithSnake() {
   */
   for (var i = snake.body.length -1; i > 0; i--){
     var currentSquare = snake.body[i];
-    if ((snake.head.row === snake.body[i].row) && (snake.head.column === snake.body[i].column)){
-      return true;
+    if (snake.head.row === currentSquare.row && snake.head.column === currentSquare.column){
+      while (i < snake.body.length){
+        snake.body.pop();
+        i++;
+      }
     } else {
       return false;
     }
