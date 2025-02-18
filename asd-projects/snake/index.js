@@ -227,10 +227,11 @@ function hasCollidedWithSnake() {
   for (var i = snake.body.length -1; i > 0; i--){
     var currentSquare = snake.body[i];
     if (snake.head.row === currentSquare.row && snake.head.column === currentSquare.column){
-      while (i < snake.body.length){
+      return true;
+      /*while (i < snake.body.length){
         snake.body.pop();
         i++;
-      }
+      }*/
     } else {
       return false;
     }
