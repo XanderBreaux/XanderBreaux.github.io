@@ -87,20 +87,20 @@ function checkForNewDirection(event) {
   perpendicular to the current direction
   */
 
-  if ((activeKey === KEY.LEFT) /*&& (snake.head.direction !== "right")*/) {
+  if ((activeKey === KEY.LEFT) && (snake.head.direction !== "right")) {
     snake.head.direction = "left";
-  } else if ((activeKey === KEY.RIGHT) /*&& (snake.head.direction !== "left")*/) {
+  } else if ((activeKey === KEY.RIGHT) && (snake.head.direction !== "left")) {
     snake.head.direction = "right";
-  } else if ((activeKey === KEY.UP) /*&& (snake.head.direction !== "down")*/) {
+  } else if ((activeKey === KEY.UP) && (snake.head.direction !== "down")) {
     snake.head.direction = "up";
-  } else if ((activeKey === KEY.DOWN) /*&& (snake.head.direction !== "up" )*/) {
+  } else if ((activeKey === KEY.DOWN) && (snake.head.direction !== "up" )) {
     snake.head.direction = "down";
   }
   
 
   // FILL IN THE REST
 
-  console.log(snake.head.direction);
+ // console.log(snake.head.direction);
 }
 
 function moveSnake() {
@@ -224,17 +224,13 @@ function hasCollidedWithSnake() {
   head and each part of the snake's body also knows its own row and column.
   
   */
-  for (var i = snake.body.length -1; i > 0; i--){
+  for (var i = 1; i < snake.body.length; i++){
     var currentSquare = snake.body[i];
     if (snake.head.row === currentSquare.row && snake.head.column === currentSquare.column){
       return true;
-      /*while (i < snake.body.length){
-        snake.body.pop();
-        i++;
-      }*/
-    } else {
-      return false;
-    }
+    } 
+    return false;
+    
   }
   
 }
@@ -349,6 +345,15 @@ function getRandomAvailablePosition() {
     randomPosition.column = Math.floor(Math.random() * COLUMNS);
     randomPosition.row = Math.floor(Math.random() * ROWS);
     spaceIsAvailable = true;
+    for (var i = 0; i < snake.body.length; i++){
+      var currentRow = snake.body[i].row;
+      var currentColumn = snake.body[i].column;
+      if (currentRow === randomPosition.row && currentColumn === randomPosition.column){
+        spaceIsAvailable = false;
+      } else {
+        spaceIsAvailable = true;
+      }
+    } 
 
     /*
     TODO 13: After generating the random position determine if that position is
