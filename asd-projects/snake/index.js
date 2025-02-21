@@ -42,19 +42,17 @@ $("body").on("keydown", handleKeyDown);
 init();
 
 function init() {
-  // TODO 4c-2: initialize the snake
-  makeApple();
-  // TODO 4b-2: initialize the apple
+  // TODO 4c-2: initialize the snake 
   // initialize the snake's body as an empty Array
   snake.body = [];
-
   // make the first snakeSquare and set it as the head
   makeSnakeSquare(10, 10);
   snake.head = snake.body[0];
   // TODO 5a: Initialize the interval
   // start update interval
   updateInterval = setInterval(update, 100);  
-
+  // TODO 4b-2: initialize the apple  
+  makeApple();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -229,10 +227,8 @@ function hasCollidedWithSnake() {
     if (snake.head.row === currentSquare.row && snake.head.column === currentSquare.column){
       return true;
     } 
-    return false;
-    
   }
-  
+      return false;
 }
 
 function endGame() {
@@ -339,16 +335,13 @@ function repositionSquare(square) {
 function getRandomAvailablePosition() {
   var spaceIsAvailable;
   var randomPosition = {};
-
   /* Generate random positions until one is found that doesn't overlap with the snake */
   while (!spaceIsAvailable) {
     randomPosition.column = Math.floor(Math.random() * COLUMNS);
     randomPosition.row = Math.floor(Math.random() * ROWS);
-    spaceIsAvailable = true;
-    for (var i = 0; i < snake.body.length; i++){
-      var currentRow = snake.body[i].row;
-      var currentColumn = snake.body[i].column;
-      if (currentRow === randomPosition.row && currentColumn === randomPosition.column){
+    for (var i = 0; i < snake.body.length; i++) {
+      var currentSquare = snake.body[i];
+      if (currentSquare.row === randomPosition.row && currentSquare.column === randomPosition.column){
         spaceIsAvailable = false;
       } else {
         spaceIsAvailable = true;

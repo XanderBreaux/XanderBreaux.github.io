@@ -1,6 +1,6 @@
 
 body {
-  background-color: darkgreen;
+  background-color: maroon;
 }
 
 #board {
@@ -20,18 +20,19 @@ body {
   height: 20px;
   position: absolute;
   user-select: none;
+  border-radius: 10px;
 }
 
 .snake {
-  background-color: green;
+  background-color: darkred;
   z-index: 2;
 }
 
 #snake-head {
-  background-color: darkgreen;
+  background-color: red;
 }
 
 .apple {
-  background-color: red;
+  background-color: goldenrod;
   z-index: 1;
 }
