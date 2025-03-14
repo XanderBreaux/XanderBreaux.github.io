@@ -22,11 +22,19 @@ function runProgram(){
   }
   
   // Game Item Objects
-  var walker = {
+  var walker1 = {
     positionX: 0,
     positionY: 0,
     speedX: 0,
     speedY: 0,
+    ID: "#walker1"
+  }
+  var walker2 = {
+    positionX: 0,
+    positionY: 0,
+    speedX: 0,
+    speedY: 0,
+    ID: "#walker2"
   }
 
   // one-time setup
@@ -42,11 +50,15 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    repositionGameItem();
-    wallCollisions();
-    redrawGameItem();
+    /// For Walker1
+    repositionGameItem(walker1);
+    wallCollisions(walker1);
+    redrawGameItem(walker1);
 
-
+    /// For Walker2
+    repositionGameItem(walker2);
+    wallCollisions(walker2);
+    redrawGameItem(walker2);
   }
   
   /* 
@@ -55,25 +67,45 @@ function runProgram(){
   function handleKeyDown(event) {
     if (event.which === KEY.LEFT) {
       console.log("Left Pressed");
-      walker.speedX = -5;
+      walker1.speedX = -5;
     } else if ( event.which === KEY.UP) {
       console.log("Up Pressed");
-      walker.speedY = -5;
+      walker1.speedY = -5;
     } else if ( event.which === KEY.RIGHT) {
       console.log("Right Pressed");
-      walker.speedX = 5;
+      walker1.speedX = 5;
     } else if ( event.which === KEY.DOWN) {
       console.log("Down Pressed");
-      walker.speedY = 5;
+      walker1.speedY = 5;
+    }
+    if (event.which === KEY.A) {
+      console.log("Left Pressed");
+      walker2.speedX = -5;
+    } else if ( event.which === KEY.W) {
+      console.log("Up Pressed");
+      walker2.speedY = -5;
+    } else if ( event.which === KEY.D) {
+      console.log("Right Pressed");
+      walker2.speedX = 5;
+    } else if ( event.which === KEY.S) {
+      console.log("Down Pressed");
+      walker2.speedY = 5;
     }
   }
 
   function handleKeyUp(event) {
     if (event.which === KEY.LEFT || event.which === KEY.RIGHT) {
-      walker.speedX = 0;
+      walker1.speedX = 0;
     }
     if ( event.which === KEY.UP || event.which === KEY.DOWN) {
-      walker.speedY = 0;
+      walker1.speedY = 0;
+    }
+
+    if (event.which === KEY.A || event.which === KEY.D) {
+      walker2.speedX = 0;
+    }
+    if ( event.which === KEY.W || event.which === KEY.S) {
+      walker2.speedY = 0;
     }
   }
   ////////////////////////////////////////////////////////////////////////////////
@@ -90,28 +122,28 @@ function runProgram(){
   }
   
   /// Changes game items position
-  function repositionGameItem() {
-    walker.positionX += walker.speedX;
-    walker.positionY += walker.speedY;
+  function repositionGameItem(gameItem) {
+    gameItem.positionX += gameItem.speedX;
+    gameItem.positionY += gameItem.speedY;
   }
   
-  /// Redraws the game object
-  function redrawGameItem() {
-    $("#walker").css("left", walker.positionX)
-                .css("top", walker.positionY)
+  /// Redraws the game objects
+  function redrawGameItem(gameItem) {
+    $(gameItem.ID).css("left", gameItem.positionX)
+                .css("top", gameItem.positionY)
   }
 
   /// Handle wall collisions
-  function wallCollisions() {
-    if (walker.positionX + 50 > $("#board").width()) {
-      walker.positionX = $("#board").width() - 50;
-    } else if (walker.positionX < 0) {
-      walker.positionX = 0;
+  function wallCollisions(gameItem) {
+    if (gameItem.positionX + 50 > $("#board").width()) {
+      gameItem.positionX = $("#board").width() - 50;
+    } else if (gameItem.positionX < 0) {
+      gameItem.positionX = 0;
     }
-    if (walker.positionY + 50 > $("#board").height()) {
-      walker.positionY = $("#board").height() - 50;
-    } else if (walker.positionY < 0) {
-      walker.positionY = 0;
+    if (gameItem.positionY + 50 > $("#board").height()) {
+      gameItem.positionY = $("#board").height() - 50;
+    } else if (gameItem.positionY < 0) {
+      gameItem.positionY = 0;
     }
   }
 }
