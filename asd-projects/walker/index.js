@@ -27,14 +27,14 @@ function runProgram(){
     positionY: 0,
     speedX: 0,
     speedY: 0,
-    ID: "#walker1"
+    ID: "#walker1",
   }
   var walker2 = {
-    positionX: 0,
+    positionX: $("#board").width() - 50,
     positionY: 0,
     speedX: 0,
     speedY: 0,
-    ID: "#walker2"
+    ID: "#walker2",
   }
 
   // one-time setup
