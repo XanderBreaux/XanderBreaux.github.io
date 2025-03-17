@@ -4,8 +4,8 @@ body {
 }
 
 #board {
-  width: 440px;
-  height: 440px;
+  width: 600px;
+  height: 600px;
   border: 1px solid white;
   background-color: black;
   position: relative;
@@ -17,8 +17,6 @@ body {
   height: 50px;
   position: absolute;
   border-radius: 50px;
-/*   left: 100px; */  /* Uncomment if you want to set a "starting" position */
-/*   top: 100px;  */  /* Uncomment if you want to set a "starting" position */
 }
 
 #walker2 {
@@ -27,5 +25,4 @@ body {
   height: 50px;
   position: absolute;
   border-radius: 50px;
-  left: 200px
 }
