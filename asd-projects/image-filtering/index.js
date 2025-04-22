@@ -20,16 +20,13 @@ function resetAndRender() {
 // all of your apply functions
 function applyAndRender() {
   // Multiple TODOs: Call your apply function(s) here
-  applyFilter(reddify);
+  // applyFilter(reddify);
   applyFilterNoBackground(decreaseBlue);
-  applyFilterNoBackground(increaseGreenByBlue);
-
+  // applyFilterNoBackground(increaseGreenByBlue);
 
   // do not change the below line of code
   render($("#display"), image);
 }
-
-
 
 /////////////////////////////////////////////////////////
 // "apply" and "filter" functions should go below here //
@@ -42,7 +39,7 @@ function applyFilter(filterFunction) {
     for (var j = 0; j < row.length; j++) {
       var rgbString = row[j];
       var rgbNumbers = rgbStringToArray(rgbString);
-      filterFunction(rgbNumbers)
+      filterFunction(rgbNumbers);
       rgbString = rgbArrayToString(rgbNumbers);
       row[j] = rgbString;
     }
@@ -58,18 +55,17 @@ function applyFilterNoBackground(filterFunction) {
       var rgbString = row[j];
       if (rgbString !== backColor) {
         var rgbNumbers = rgbStringToArray(rgbString);
-        filterFunction(rgbNumbers)
+        filterFunction(rgbNumbers);
         rgbString = rgbArrayToString(rgbNumbers);
         row[j] = rgbString;
       }
-      
     }
   }
 }
 
 // TODO 5: Create the keepInBounds function
 function keepInBounds(num) {
-  return num < 0 ? 0 : (num > 255 ? 255 : num);
+  return num < 0 ? 0 : num > 255 ? 255 : num;
 }
 
 // TODO 3: Create reddify function
@@ -91,3 +87,29 @@ function increaseGreenByBlue(arr) {
 }
 
 // CHALLENGE code goes below here
+
+/// Apply smudge filter
+
+// function applyChallengeFilter(func) {
+//   for (var i = 0; i < image.length; i++) {
+//     var row = image[i];
+//     for (var j = 0; j < row.length; j++) {
+//       var rgbString = row[j];
+//       var rgbNumbers = rgbStringToArray(rgbString);
+//       /////
+//       var rgbString2 = row[j + 1];
+//       var rgbNumbers2 = rgbStringToArray(rgbString2);
+//       /////
+//       func(rgbNumbers, rgbNumbers2);
+//       /////
+//       rgbString = rgbArrayToString(rgbNumbers);
+//       row[j] = rgbString;
+//       rgbString2 = rgbArrayToString(rgbNumbers2);
+//       row[j + 1] = rgbString2;
+//     }
+//   }
+// }
+
+// function smudgeFilterRed(px1, px2) {
+//   px1[RED] += Math.floor(0.5 * px2[RED]);
+// }
