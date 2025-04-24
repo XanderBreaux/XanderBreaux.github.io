@@ -14,11 +14,11 @@ The CSS ids you will work with are:
 ///////////////////////////////////////////////////////////////////////
 
 // TODO 2: Implement bubbleSort
-async function bubbleSort(arr) {
-    for(var i = 0; i <= arr.length - 1; i++) {
-        for(var j = arr.length - 1; j <= arr.length + 1; j++) {
-            if(arr[j] <= arr[j - 1]) {
-                swap(j, j + 1, arr);
+async function bubbleSort(array) {
+    for(var i = 0; i <= array.length - 1; i++) {
+        for(var j = array.length - 1; j <= i + 1; j++) {
+            if(array[j] < array[j - 1]) {
+                swap(array, j, j + 1);
                 updateCounter(bubbleCounter);
                 await sleep();
             }
@@ -34,11 +34,11 @@ async function bubbleSort(arr) {
 
 // TODO 1: Implement swap
 
-function swap(i, j, arr) {
-    const TEMP = arr[i];
-    arr[i] = arr[j];
-    arr[j] = TEMP;
-    drawSwap(arr, i, j);
+function swap(array, i, j) {
+    let temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+    drawSwap(array, i, j);
 }
 
 ///////////////////////////////////////////////////////////////////////
