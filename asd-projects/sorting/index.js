@@ -15,7 +15,7 @@ The CSS ids you will work with are:
 
 // TODO 2: Implement bubbleSort
 
-// Bubblesorts the given array
+// bubble sorts the given array; sorts values through repeated comparing and swapping of values, putting them in order
 
 async function bubbleSort(array) {
     for (var i = 0; i <= array.length - 1; i++) {
@@ -31,7 +31,7 @@ async function bubbleSort(array) {
 
 // TODO 3: Implement quickSort
 
-// Bubblesorts the given array
+// quick sorts the given array;  Compares values and moves them to either the left or right of a random pivot
 
 async function quickSort(array, left, right) {
     if (right - left > 0) {
@@ -40,13 +40,15 @@ async function quickSort(array, left, right) {
             quickSort(array, left, index -1);
         }
         if (index < right) {
-            quickSort (array, index, right);
+            quickSort(array, index, right);
         }
     }
 }
 
 
 // TODOs 4 & 5: Implement partition
+
+// seperates the array into sub-arrays and creates the pivot for the quick sort
 
 async function partition(array, left, right) {
     var pivot = array[Math.floor((right + left) / 2)].value;
@@ -64,7 +66,7 @@ async function partition(array, left, right) {
 
 // TODO 1: Implement swap
 
-// Swaps two items in an array
+// Swaps the two items in the array
 
 function swap(array, i, j) {
     let temp = array[i];
